@@ -1,0 +1,14 @@
+name: first workflow
+
+on: 
+  push: 
+  workflow_dispatch:
+
+jobs:
+  simple-job:
+  name: print details
+  run-on: ubuntu-latest
+  steps:
+    - name: print date
+      run: echo 'date'
+    
