@@ -6,7 +6,7 @@ on:
 
 jobs:
   simple-job:
-  name: print details
+    name: print details
     run-on: ubuntu-latest
     steps:
       - name: print date
