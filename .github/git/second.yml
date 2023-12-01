@@ -1,0 +1,29 @@
+name: Second workflow
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  simple-job:
+    name: Print details
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Call reusable action
+        uses: ./.github/git
+
+      - name: Call reusable action
+        id: action
+        uses: ./.github/git
+        with:
+          message-prefix: Hello from our action
+
+      - name: Print result
+        env:
+          SHA: ${{ steps.action.outputs.short-sha }}
+        run: |
+          echo $SHA
+          echo ${{ steps.action.outputs.commit-message }}
