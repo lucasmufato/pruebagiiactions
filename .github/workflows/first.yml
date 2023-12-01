@@ -10,5 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print date
-        run: echo 'date'
+        run: echo `date`
+                
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Print latest commit SHA
+        run: |
+          sha=$(git log -1 --pretty=format:"%h")
+          echo "Short sha: $sha"
+
+      - run: |
+          message=$(git log -1 --pretty=format:"%B")
+          echo "Last commit message: $message"
+
     
